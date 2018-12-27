@@ -10,6 +10,7 @@
                 window.user_id.innerText = profile.getId();
                 window.user_name.innerText = profile.getName();
                 window.email.innerText = profile.getEmail();
+                window.user_id_token.innerText = googleUser.getAuthResponse().id_token;
 
               console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
               console.log('Name: ' + profile.getName());
@@ -21,9 +22,19 @@
 
     <body>
         <b>User-id:</b> <p id="user_id"></p>
+        <b>ID Token:</b> <p id="user_id_token"></p>
         <b>Name:</b> <p id="user_name"></p>
         <b>E-mail:</b> <p id="email"></p>
 
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+        <h3>Aclaracion acerca de autenticacion en el server</h3>
+
+        <p>no hay que usar el <b>user_id</b> para autenticar al usuario desde el server (ya que estos ids son publicos y pueden ser facilmente obtenidos), hay que usar el <b>ID token</b> que tambien se obtiene en el proceso de login</p>
+
+        <p>El <b>ID token</b> es el que se envia al server, y este a su vez valida con los servicios de google si es valido</p>
+
+        <p>Para mas informacion: <a href="https://developers.google.com/identity/sign-in/web/backend-auth">https://developers.google.com/identity/sign-in/web/backend-auth</a></p>
+
     </body>
 </html>
