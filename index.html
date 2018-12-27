@@ -7,6 +7,7 @@
             function onSignIn(googleUser) {
                 var profile = googleUser.getBasicProfile();
 
+                window.user_picture.src = profile.getImageUrl();
                 window.user_id.innerText = profile.getId();
                 window.user_name.innerText = profile.getName();
                 window.email.innerText = profile.getEmail();
@@ -25,6 +26,7 @@
         <b>ID Token:</b> <p id="user_id_token"></p>
         <b>Name:</b> <p id="user_name"></p>
         <b>E-mail:</b> <p id="email"></p>
+        <b>User Picture:</b> <p><img id="user_picture"/></p>
 
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
